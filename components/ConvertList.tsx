@@ -1,3 +1,4 @@
+"use client"
 import ConvertAction from '@/types/ConvertAction'
 import React, { PropsWithChildren, useState } from 'react'
 import { FaImage } from "react-icons/fa6";

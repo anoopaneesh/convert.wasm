@@ -12,6 +12,7 @@ import { useEffect, useRef, useState } from "react";
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import { fetchFile, toBlobURL } from '@ffmpeg/util'
 import { ConvertingStatus } from "@/types/common";
+import NoSSRWrapper from "./NoSSRWrapper";
 
 
 export default function Home() {
@@ -39,7 +40,7 @@ export default function Home() {
     setConverting("Converting")
     const ffmpeg = ffmpegRef.current
     const tmp_actions = [...convertQ]
-    for(const action of tmp_actions){
+    for (const action of tmp_actions) {
       try {
         action.is_converting = true
         setConvertQ([...tmp_actions])
@@ -122,41 +123,43 @@ export default function Home() {
     load()
   }, [])
   return (
-    <div>
-      <Navbar />
-      <div className="flex flex-col justify-center gap-4 items-center">
-        <div className="flex flex-col gap-4 mt-8 items-center w-4xl text-center justify-center">
-          <h1 className="text-7xl flex flex-col justify-center gap-4">
-            <span className="text-green-400">Convert your</span>
-            <span>files easily</span>
-          </h1>
-          <p className=" max-w-4xl text-gray-300">The ultimate tool for unlimited and free multimedia conversion. Transform images, audio, and videos effortlessly, without restriction. Start converting now and elevate your content like never before!</p>
+    <NoSSRWrapper>
+      <div>
+        <Navbar />
+        <div className="flex flex-col justify-center gap-4 items-center">
+          <div className="flex flex-col gap-4 mt-8 items-center w-4xl text-center justify-center">
+            <h1 className="text-7xl flex flex-col justify-center gap-4">
+              <span className="text-green-400">Convert your</span>
+              <span>files easily</span>
+            </h1>
+            <p className=" max-w-4xl text-gray-300">The ultimate tool for unlimited and free multimedia conversion. Transform images, audio, and videos effortlessly, without restriction. Start converting now and elevate your content like never before!</p>
+          </div>
+          {convertQ.length ? <><ConvertList
+            converting={converting}
+            queue={convertQ}
+            handleRemoveFromQueue={handleRemoveFromQueue}
+            changeConvertTo={changeConvertTo} />
+            <div className="flex flex-col items-end w-[80vw] gap-2">
+              {converting === "Inital" ? <> <Label htmlFor="picture" className={cn(buttonVariants({ variant: "default", size: "default", className: "" }))}>
+                Add more files
+              </Label>
+                <Input id="picture" type="file" className="hidden" accept={getAcceptString()} onChange={(event) => {
+                  const file = event.target.files?.[0]
+                  if (file) {
+                    handleAddToQueue(...getConvertActionFromFile(file))
+                  }
+                }} /></> : <></>}
+              {converting === 'Completed' ? <>
+                <Button onClick={() => downloadAll()}>Download All</Button>
+                <Button onClick={() => resetQueue()}>Convert Other files</Button>
+              </>
+                : <></>}
+              <Button disabled={!convertQ.length || convertQ.some(i => i.to == null)} onClick={() => transcode()}>
+                {converting === 'Inital' ? 'Convert All' : 'Convert Again'}
+              </Button>
+            </div></> : <FileDropZone handleAddToQueue={handleAddToQueue} queue={convertQ} />}
         </div>
-        {convertQ.length ? <><ConvertList
-          converting={converting}
-          queue={convertQ}
-          handleRemoveFromQueue={handleRemoveFromQueue}
-          changeConvertTo={changeConvertTo} />
-          <div className="flex flex-col items-end w-[80vw] gap-2">
-            {converting === "Inital" ? <> <Label htmlFor="picture" className={cn(buttonVariants({ variant: "default", size: "default", className: "" }))}>
-              Add more files
-            </Label>
-              <Input id="picture" type="file" className="hidden" accept={getAcceptString()} onChange={(event) => {
-                const file = event.target.files?.[0]
-                if (file) {
-                  handleAddToQueue(...getConvertActionFromFile(file))
-                }
-              }} /></> : <></>}
-            {converting === 'Completed' ? <>
-              <Button onClick={() => downloadAll()}>Download All</Button>
-              <Button onClick={() => resetQueue()}>Convert Other files</Button>
-            </>
-              : <></>}
-            <Button disabled={!convertQ.length || convertQ.some(i => i.to == null)} onClick={() => transcode()}>
-              {converting === 'Inital' ? 'Convert All' : 'Convert Again'}
-            </Button>
-          </div></> : <FileDropZone handleAddToQueue={handleAddToQueue} queue={convertQ} />}
       </div>
-    </div>
+    </NoSSRWrapper>
   );
 }
