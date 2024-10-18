@@ -37,6 +37,10 @@ export const getConvertActionFromFile = (...files: File[]) : ConvertAction[] => 
         size: file.size,
         mimeType: file.type,
         from: file.name.split('.')[1],
-        to: null
+        to: null,
+        file,
+        is_converting:false,
+        convert_error:null,
+        output_url:null
     }))
 }
