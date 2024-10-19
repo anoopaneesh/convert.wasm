@@ -1,12 +1,11 @@
-"use client"
 import React, { Dispatch, PropsWithChildren, SetStateAction, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { IoCloudDownloadOutline } from "react-icons/io5";
 import { FaPaperclip } from "react-icons/fa6"
-import ConvertAction from '@/types/ConvertAction';
-import { useToast } from '@/hooks/use-toast';
-import { accepted_files, extensions } from '@/utils/constants';
-import { getConvertActionFromFile } from '@/utils/utils';
+import ConvertAction from '@/src/types/ConvertAction';
+import { useToast } from '@/src/hooks/use-toast';
+import { accepted_files, extensions } from '@/src/utils/constants';
+import { getConvertActionFromFile } from '@/src/utils/utils';
 
 interface FileDropZoneProps {
     queue: ConvertAction[]

@@ -1,4 +1,4 @@
-import ConvertAction from "@/types/ConvertAction";
+import ConvertAction from "@/src/types/ConvertAction";
 import { extensions } from "./constants";
 import { v4 as uuidv4 } from 'uuid';
 export function formatFileSize(bytes: number) {
@@ -30,7 +30,7 @@ export function getAcceptString() {
     return accept.join(",")
 }
 
-export const getConvertActionFromFile = (...files: File[]) : ConvertAction[] => {
+export const getConvertActionFromFile = (...files: File[]): ConvertAction[] => {
     return files.map(file => ({
         id: uuidv4(),
         filename: file.name.split('.')[0],
@@ -39,8 +39,8 @@ export const getConvertActionFromFile = (...files: File[]) : ConvertAction[] => 
         from: file.name.split('.')[1],
         to: null,
         file,
-        is_converting:false,
-        convert_error:null,
-        output_url:null
+        is_converting: false,
+        convert_error: null,
+        output_url: null
     }))
 }

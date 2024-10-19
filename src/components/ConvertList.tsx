@@ -1,15 +1,14 @@
-"use client"
-import ConvertAction from '@/types/ConvertAction'
+import ConvertAction from '@/src/types/ConvertAction'
 import React, { PropsWithChildren, useState } from 'react'
 import { FaImage } from "react-icons/fa6";
 import { MdAudiotrack } from "react-icons/md";
 import { FaVideo } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
-import { formatFileSize, getSupportedExtensions } from '@/utils/utils';
+import { formatFileSize, getSupportedExtensions } from '@/src/utils/utils';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from './ui/select';
-import { extensions } from '@/utils/constants';
+import { extensions } from '@/src/utils/constants';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { ConvertingStatus } from '@/types/common';
+import { ConvertingStatus } from '@/src/types/common';
 
 interface ConvertListProps {
   queue: ConvertAction[],
