@@ -5,7 +5,7 @@ import { FaImage } from "react-icons/fa6";
 import { MdAudiotrack } from "react-icons/md";
 import { FaVideo } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
-import { formatFileSize, getSupportedExtensions } from '@/utils/utils';
+import { formatFileSize, getCompressedFilename, getSupportedExtensions } from '@/utils/utils';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from './ui/select';
 import { extensions } from '@/utils/constants';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
@@ -39,11 +39,11 @@ const ConvertListItem: React.FC<ConvertListItemProps> = ({ action, changeConvert
     <div className='flex flex-col md:flex-row items-center gap-2'>
       <div className='inline-flex gap-1'>
         {getFileIcon(action.mimeType)}
-        <p>{`${action.filename}.${action.from}`}</p>
+        <p>{`${getCompressedFilename(action.filename)}.${action.from}`}</p>
       </div>
       <p className='text-gray-400 text-sm'>{`(${formatFileSize(action.size)})`}</p>
     </div>
-    <div className='flex gap-4 md:gap-32 items-center'>
+    <div className='flex gap-4 md:gap-32 items-center flex-1'>
       <div className='flex md:flex-row flex-col items-center gap-2'>
         {!action.output_url && !action.is_converting && converting === 'Inital' ? <>
           <p> Convert to </p>

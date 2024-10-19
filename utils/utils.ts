@@ -44,3 +44,11 @@ export const getConvertActionFromFile = (...files: File[]) : ConvertAction[] => 
         output_url:null
     }))
 }
+
+export const getCompressedFilename = (name:string) : string  => {
+    let value = name
+    if(value.length > 10){
+       value =  value.slice(0,5)+"..."+value.slice(value.length-5,value.length)
+    }
+    return value
+}
