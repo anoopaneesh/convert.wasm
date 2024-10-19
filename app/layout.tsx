@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import GA from "@/components/GA";
+import Head from "next/head";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -33,8 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GA GA_MEASUREMENT_ID="G-8G57BM7VEY" />
-      <meta name="google-site-verification" content="eObP1f3jmsXYzoX08FtrZxKN-ZIwbmuAQjQPHIY-CXg" />
+      <Head>
+        <link rel="icon" type="image/ico" sizes="16x16" href="/favicon.ico" />
+        <GA GA_MEASUREMENT_ID="G-8G57BM7VEY" />
+        <meta name="google-site-verification" content="eObP1f3jmsXYzoX08FtrZxKN-ZIwbmuAQjQPHIY-CXg" />
+      </Head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-white bg-black`}
       >
