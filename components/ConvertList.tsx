@@ -35,14 +35,16 @@ interface ConvertListItemProps {
 const ConvertListItem: React.FC<ConvertListItemProps> = ({ action, changeConvertTo, handleRemoveFromQueue, converting }) => {
   const [selectedValue, setSelectedValue] = useState("")
   const [defaultTab, setDefaultTab] = useState('video')
-  return <div className='w-full h-20 bg-gray-900 rounded-md flex items-center justify-between px-4' >
-    <div className='flex items-center gap-2'>
-      {getFileIcon(action.mimeType)}
-      <p>{`${action.filename}.${action.from}`}</p>
+  return <div className='w-full h-32 md:h-20 bg-gray-900 rounded-md flex items-center justify-between px-4' >
+    <div className='flex flex-col md:flex-row items-center gap-2'>
+      <div className='inline-flex gap-1'>
+        {getFileIcon(action.mimeType)}
+        <p>{`${action.filename}.${action.from}`}</p>
+      </div>
       <p className='text-gray-400 text-sm'>{`(${formatFileSize(action.size)})`}</p>
     </div>
-    <div className='flex gap-32 items-center'>
-      <div className='flex items-center gap-2'>
+    <div className='flex gap-4 md:gap-32 items-center'>
+      <div className='flex md:flex-row flex-col items-center gap-2'>
         {!action.output_url && !action.is_converting && converting === 'Inital' ? <>
           <p> Convert to </p>
           <Select value={selectedValue} onValueChange={(value) => {

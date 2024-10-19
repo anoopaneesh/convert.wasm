@@ -137,7 +137,7 @@ const App = () => {
                     queue={convertQ}
                     handleRemoveFromQueue={handleRemoveFromQueue}
                     changeConvertTo={changeConvertTo} />
-                    <div className="flex flex-col items-end md:w-[80vw] gap-2">
+                    <div className="flex flex-col items-stretch md:items-end md:w-[80vw] gap-2">
                         {converting === "Inital" ? <> <Label htmlFor="picture" className={cn(buttonVariants({ variant: "default", size: "default", className: "" }))}>
                             Add more files
                         </Label>
