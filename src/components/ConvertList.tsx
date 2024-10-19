@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { extensions } from '@/src/utils/constants';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { ConvertingStatus } from '@/src/types/common';
+import { Badge } from './ui/badge';
 
 interface ConvertListProps {
   queue: ConvertAction[],
@@ -78,7 +79,7 @@ const ConvertListItem: React.FC<ConvertListItemProps> = ({ action, changeConvert
             </SelectContent>
           </Select>
         </> : <></>}
-        {action.is_converting ? <p>Converting..</p> : (action.output_url ? <p>Completed</p> : (converting === 'Converting' ? <p>Waiting</p> : <></>))}
+        {action.is_converting ? <p>Converting..</p> : (action.output_url ? <p>Completed</p> : (converting === 'Converting' ? <p>Waiting</p> : (action.convert_error ? <Badge variant="destructive">Error occured</Badge> : <></>)))}
       </div>
       {converting === 'Inital' ?
         <IoMdClose size={20} className='cursor-pointer' onClick={() => handleRemoveFromQueue(action.id)} /> : <></>}
