@@ -36,7 +36,7 @@ export const getConvertActionFromFile = (...files: File[]) : ConvertAction[] => 
         filename: file.name.split('.')[0],
         size: file.size,
         mimeType: file.type,
-        from: file.name.split('.')[1],
+        from: file.name.split('.')[file.name.split('.').length - 1],
         to: null,
         file,
         is_converting:false,

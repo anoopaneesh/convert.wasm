@@ -39,7 +39,7 @@ const ConvertListItem: React.FC<ConvertListItemProps> = ({ action, changeConvert
     <div className='flex flex-col md:flex-row items-center gap-2'>
       <div className='inline-flex gap-1'>
         {getFileIcon(action.mimeType)}
-        <p>{`${getCompressedFilename(action.filename)}.${action.from}`}</p>
+        <p>{`${window.innerWidth < 700 ? getCompressedFilename(action.filename) : action.filename}.${action.from}`}</p>
       </div>
       <p className='text-gray-400 text-sm'>{`(${formatFileSize(action.size)})`}</p>
     </div>
