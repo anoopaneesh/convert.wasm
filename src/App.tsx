@@ -25,7 +25,7 @@ export default function App() {
     const baseURL = "https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm";
     const ffmpeg = ffmpegRef.current;
     ffmpeg.on("log", ({ message }) => {
-      if (messageRef.current) messageRef.current.innerHTML = message;
+      if (messageRef.current) messageRef.current = message;
     });
     // toBlobURL is used to bypass CORS issue, urls with the same
     // domain can be used directly.
