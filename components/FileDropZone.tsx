@@ -33,7 +33,7 @@ const FileDropZone: React.FC<PropsWithChildren<FileDropZoneProps>> = ({ queue, h
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: accepted_files, onDropRejected, onError: onDropRejected })
 
     return (
-        <div className='w-[80vw] h-[20vw] bg-gray-800 rounded-md p-2'>
+        <div className='w-full md:w-[80vw] h-[300px] md:h-[20vw] bg-gray-800 rounded-md p-2'>
             <div {...getRootProps()} className='w-full h-full border-dashed border rounded-md'>
                 <div className='flex flex-col items-center justify-center gap-2 h-full'>
                     <IoCloudDownloadOutline size={30} className='text-green-300' />

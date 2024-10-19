@@ -19,7 +19,7 @@ interface ConvertListProps {
 }
 const ConvertList: React.FC<PropsWithChildren<ConvertListProps>> = ({ queue, handleRemoveFromQueue, changeConvertTo, converting }) => {
   return (
-    <div className='w-[80vw] bg-gray-800 rounded-md p-2 flex flex-col gap-2'>
+    <div className='w-full md:w-[80vw] bg-gray-800 rounded-md p-2 flex flex-col gap-2'>
       {queue.map((action, idx) => <ConvertListItem action={action} handleRemoveFromQueue={handleRemoveFromQueue} changeConvertTo={changeConvertTo} converting={converting} />)}
     </div>
   )

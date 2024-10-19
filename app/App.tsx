@@ -125,8 +125,8 @@ const App = () => {
         <div>
             <Navbar />
             <div className="flex flex-col justify-center gap-4 items-center">
-                <div className="flex flex-col gap-4 mt-8 items-center w-4xl text-center justify-center">
-                    <h1 className="text-7xl flex flex-col justify-center gap-4">
+                <div className="flex flex-col gap-1 md:gap-4 mt-16 md:mt-8 items-center w-full md:w-4xl text-center justify-center">
+                    <h1 className="text-3xl md:text-7xl flex flex-col justify-center gap-4">
                         <span className="text-green-400">Convert your</span>
                         <span>files easily</span>
                     </h1>
@@ -137,7 +137,7 @@ const App = () => {
                     queue={convertQ}
                     handleRemoveFromQueue={handleRemoveFromQueue}
                     changeConvertTo={changeConvertTo} />
-                    <div className="flex flex-col items-end w-[80vw] gap-2">
+                    <div className="flex flex-col items-end md:w-[80vw] gap-2">
                         {converting === "Inital" ? <> <Label htmlFor="picture" className={cn(buttonVariants({ variant: "default", size: "default", className: "" }))}>
                             Add more files
                         </Label>
