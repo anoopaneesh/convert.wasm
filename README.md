@@ -1,1 +1,1 @@
-A file converter using Web Assembly
+A file converter using Web Assembly and FFmpeg
