@@ -43,7 +43,7 @@ const ConvertListItem: React.FC<ConvertListItemProps> = ({ action, changeConvert
       </div>
       <p className='text-gray-400 text-sm'>{`(${formatFileSize(action.size)})`}</p>
     </div>
-    <div className='flex gap-4 md:gap-32 items-center flex-1'>
+    <div className='flex gap-4 md:gap-32 items-center'>
       <div className='flex md:flex-row flex-col items-center gap-2'>
         {!action.output_url && !action.is_converting && converting === 'Inital' ? <>
           <p> Convert to </p>
