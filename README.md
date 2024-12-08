@@ -19,6 +19,10 @@ This is a lightweight, privacy-focused web application designed for converting i
 - **FFmpeg.wasm**: A WebAssembly build of the FFmpeg library for media conversions.
 - **NextJS/TypeScript**: For creating a user-friendly frontend.
 
+## Screenshots
+![Home Screen](./screenshots/convert1.png)
+![Convert Screen](./screenshots/convert2.png)
+
 ## Getting Started
 ### Prerequisites
 - A modern browser that supports WebAssembly.
